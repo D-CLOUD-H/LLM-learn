@@ -1,1 +1,23 @@
 1.下载anaconda。
+2.打开Anaconda创建新的环境（创建环境是为了环境隔离，给项目创建一个独一无二的环境保证依赖项不出错）
+# 创建一个名为chatgpt且python版本为3.9的环境
+conda create --name chatgpt python=3.9 -y
+报错，在没有梯子的情况下，访问国外源太慢，连接超时，创建环境失败
+## 使用 --override-channels 强制只使用你指定的源，完全忽略 defaults
+conda create --name chatgpt python=3.9 --override-channels -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/ -c https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ -y
+成功，且速度极快。
+#  激活环境
+conda activate chatgpt
+“cd”进入学习文件夹
+# 克隆教程
+git clone https://github.com/datawhalechina/llm-cookbook.git
+# 安装库（一定要安装到环境里）
+pip install python-dotenv openai langchain jupyter -i https://pypi.tuna.tsinghua.edu.cn/simple
+#获取api
+获取免费智谱api
+#添加智谱ai的jdk
+pip install zhipuai -i https://pypi.tuna.tsinghua.edu.cn/simple
+# 启动 Jupyter
+jupyter notebook
+#在Jupyter中创建.env文件，用于存放api的密钥（key）
+#编写脚本读取key（目的：使key与源码分离，既安全又减少修改源码次数）
